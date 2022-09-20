@@ -12,7 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Todo List',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        unselectedWidgetColor: Colors.white,
         primarySwatch: Colors.blue,
       ),
       home: HomePage(),

@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
             title: Text(
               note.title!,
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 24,
                 color: Colors.white,
                 decoration: note.status == 0
                     ? TextDecoration.none
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
             subtitle: Text(
               '${_dateFormatter.format(note.date!)} - ${note.priority}',
               style: TextStyle(
-                fontSize: 15,
+                fontSize: 12,
                 color: Colors.white,
                 decoration: note.status == 0
                     ? TextDecoration.none
@@ -66,7 +66,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                 );
               },
-              activeColor: Theme.of(context).primaryColor,
+              activeColor: Color(0xFFa3fda1),
+              checkColor: Colors.black,
               value: note.status == 1 ? true : false,
             ),
             onTap: () {
@@ -83,8 +84,8 @@ class _HomePageState extends State<HomePage> {
           ),
           Divider(
             height: 5,
-            color: Colors.red,
-            thickness: 2.5,
+            color: Color(0xFF925FF0),
+            thickness: 3,
           ),
         ],
       ),
@@ -94,18 +95,24 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
+      backgroundColor: Color(0xFF0B0B0B),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Color(0xFFa3fda1),
         onPressed: () {
           Navigator.push(
-              context,
-              CupertinoPageRoute(
-                  builder: (_) => AddNoteScreen(
-                        updateNoteList: _updateNoteList,
-                      )));
+            context,
+            CupertinoPageRoute(
+              builder: (_) => AddNoteScreen(
+                updateNoteList: _updateNoteList,
+              ),
+            ),
+          );
         },
-        child: Icon(Icons.add),
+        child: Icon(
+          Icons.add,
+          color: Colors.black,
+        ),
       ),
       body: FutureBuilder<dynamic>(
         future: _noteList,
@@ -136,7 +143,7 @@ class _HomePageState extends State<HomePage> {
                       Text(
                         "My notes",
                         style: TextStyle(
-                          color: Colors.deepPurple,
+                          color: Colors.white,
                           fontSize: 40,
                           fontWeight: FontWeight.bold,
                         ),
@@ -147,7 +154,7 @@ class _HomePageState extends State<HomePage> {
                       Text(
                         "${completeNoteCount} of ${snapshot.data.length}",
                         style: TextStyle(
-                          color: Colors.deepPurple,
+                          color: Colors.white54,
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
                         ),

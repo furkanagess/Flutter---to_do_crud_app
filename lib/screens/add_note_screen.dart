@@ -115,7 +115,7 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
+      backgroundColor: Color(0xFF0B0B0B),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: SingleChildScrollView(
@@ -132,7 +132,7 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
                   child: Icon(
                     Icons.arrow_back,
                     size: 30,
-                    color: Theme.of(context).primaryColor,
+                    color: Color(0xFFa3fda1),
                   ),
                 ),
                 SizedBox(
@@ -141,7 +141,7 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
                 Text(
                   titleText,
                   style: TextStyle(
-                    color: Colors.deepOrange,
+                    color: Colors.white,
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
                   ),
@@ -156,14 +156,27 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 20),
                         child: TextFormField(
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 18, color: Colors.white),
                           decoration: InputDecoration(
-                            labelText: "title",
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Color(0xFF925FF0),
+                              ),
+                            ),
+                            fillColor: Colors.green,
+                            labelText: "Enter a Title",
                             labelStyle: TextStyle(
                               fontSize: 18,
+                              color: Colors.white54,
                             ),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: Colors.green),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: Color(0xFF925FF0)),
                             ),
                           ),
                           validator: (input) => input!.trim().isEmpty
@@ -178,15 +191,27 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
                         child: TextFormField(
                           readOnly: true,
                           controller: _dateController,
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 18, color: Colors.white),
                           onTap: _handleDatePicker,
                           decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Color(0xFF925FF0),
+                              ),
+                            ),
                             labelText: "Date",
                             labelStyle: TextStyle(
                               fontSize: 18,
+                              color: Colors.white54,
                             ),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: Colors.green),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: Color(0xFF925FF0)),
                             ),
                           ),
                         ),
@@ -195,16 +220,17 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
                         padding: EdgeInsets.symmetric(vertical: 20),
                         child: DropdownButtonFormField(
                           isDense: true,
+                          dropdownColor: Color(0xFF0B0B0B),
                           icon: Icon(Icons.arrow_drop_down_circle),
                           iconSize: 22,
-                          iconEnabledColor: Theme.of(context).primaryColor,
+                          iconEnabledColor: Color(0xFFa3fda1),
                           items: _priorities.map((String priority) {
                             return DropdownMenuItem(
                               value: priority,
                               child: Text(
                                 priority,
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   fontSize: 16,
                                 ),
                               ),
@@ -215,9 +241,21 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
                           ),
                           decoration: InputDecoration(
                             labelText: "Priority",
-                            labelStyle: TextStyle(fontSize: 18),
+                            labelStyle:
+                                TextStyle(fontSize: 18, color: Colors.white54),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: Colors.green),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(
+                                color: Color(0xFF925FF0),
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: Color(0xFF925FF0)),
                             ),
                           ),
                           validator: (input) => _priority == null
@@ -233,37 +271,43 @@ class _AddNoteScreenState extends State<AddNoteScreen> {
                       ),
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 20),
-                        height: 60,
-                        width: double.infinity,
+                        height: 50,
+                        width: 150,
                         decoration: BoxDecoration(
-                          color: Theme.of(context).primaryColor,
-                          borderRadius: BorderRadius.circular(10),
+                          color: Color(0xFFa3fda1),
+                          borderRadius: BorderRadius.circular(40),
                         ),
                         child: ElevatedButton(
                           onPressed: _submit,
                           child: Text(
-                            btnText,
+                            "Update",
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.black,
                               fontSize: 20,
                             ),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xFFa3fda1),
                           ),
                         ),
                       ),
                       widget.note != null
                           ? Container(
                               margin: EdgeInsets.symmetric(horizontal: 20),
-                              height: 60,
-                              width: double.infinity,
+                              height: 50,
+                              width: 150,
                               decoration: BoxDecoration(
                                 color: Theme.of(context).primaryColor,
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color.fromARGB(255, 200, 50, 50),
+                                ),
                                 child: Text(
-                                  "Delete Note",
+                                  "Delete ",
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.black,
                                     fontSize: 20,
                                   ),
                                 ),
