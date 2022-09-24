@@ -6,7 +6,7 @@ https://user-images.githubusercontent.com/92018394/191787896-b0311142-c6fc-4ba8-
 <img src="github_images/todo_empty.jpeg" width="250">
 <h1>Update Page</h1>
 <img src="github_images/todo_update.jpeg" width="250">
-<h1>Completed Note</h1>
+<h1>Completed Note Page</h1>
 <img src="github_images/todo_line.jpeg" width="250">
 
 
